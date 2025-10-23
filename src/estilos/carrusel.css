@@ -1,0 +1,73 @@
+.carrusel {
+  position: relative;
+  overflow: hidden;
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 10px;
+}
+.carrusel-track {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+  align-items: stretch;
+}
+.carrusel .producto-card {
+  flex: 0 0 300px;
+  margin-right: 10px;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 400px;
+}
+.carrusel .producto-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+.carrusel .producto-card .btn-comprar {
+  padding: 8px 16px;
+  min-width: 120px;
+  max-width: 150px;
+  display: inline-block;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+.carrusel .producto-card .btn-comprar:hover {
+  background-color: #555;
+  transform: translateY(-2px);
+}
+.carrusel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 2;
+}
+.carrusel-btn.prev {
+  left: 10px;
+}
+.carrusel-btn.next {
+  right: 10px;
+}

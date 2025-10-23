@@ -1,0 +1,11 @@
+.banda-negra {
+  width: 100%;
+  background-color: #a8dadc;
+  color: #333;
+  padding: 30px 20px;
+  text-align: center;
+}
+.banda-negra h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}

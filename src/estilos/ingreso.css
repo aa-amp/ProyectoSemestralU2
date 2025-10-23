@@ -1,0 +1,44 @@
+.ingreso {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  padding: 5px 0;
+  z-index: 10;
+  margin-top: 10px;
+}
+.boton-reging {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 2px solid #333;
+  background-color: rgba(255,255,255,0.8);
+  color: #333;
+  text-decoration: none;
+  border-radius: 5px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  transition: background-color 0.3s, color 0.3s;
+}
+.boton-reging:hover {
+  background-color: rgba(51, 51, 51, 0.1);
+  color: #000;
+}
+@media (max-width: 768px) {
+  .ingreso {
+    right: 20px;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .boton-reging {
+    width: 100px;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
+}
+@media (max-width: 480px) {
+  .ingreso {
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+  }
+}
