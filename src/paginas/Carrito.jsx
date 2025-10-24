@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useCarrito } from "../contexto/CarritoContexto";
 import { Link } from "react-router-dom";
+import "../estilos/styles.css";
 
 export default function Carrito() {
   const { carrito, eliminarProducto, vaciarCarrito } = useCarrito();
-  const [mensaje, setMensaje] = useState(null); // Para mostrar el mensaje
-  const [tipoMensaje, setTipoMensaje] = useState(""); // 'exito' o 'error'
+  const [mensaje, setMensaje] = useState(null); 
+  const [tipoMensaje, setTipoMensaje] = useState(""); 
 
   const total = carrito.reduce((acc, item) => {
     const precio = parseInt(item.price.replace(/\D/g, ""));
@@ -65,9 +66,9 @@ export default function Carrito() {
           </>
         ) : null}
 
-        <div style={{ textAlign: "center", marginBottom: "40px" }}>
-          <Link to="/" className="boton-reging">Volver a Inicio</Link>
-        </div>
+        <Link to="/" className="boton-reging">
+                  Volver a Inicio
+                </Link>
       </main>
     </div>
   );

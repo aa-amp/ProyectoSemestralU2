@@ -8,6 +8,9 @@ import Productos from "./paginas/Productos";
 import Nosotros from "./paginas/Nosotros";
 import Contacto from "./paginas/Contacto";
 import Ayuda from "./paginas/Ayuda";
+import Login from "./paginas/Login";
+import MiCuenta from "./paginas/MiCuenta";
+import Registro from "./paginas/Registro";
 
 export default function App() {
   return (
@@ -21,6 +24,9 @@ export default function App() {
           <Route path="/nosotros" element={<Nosotros />} />
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/ayuda" element= {<Ayuda />} />
+          <Route path= "/login" element={<Login />} />
+          <Route path= "/micuenta" element= {<MiCuenta/>} />
+          <Route path= "/registro" element= {<Registro/>} />
         </Routes>
       </main>
       <Footer />

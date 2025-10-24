@@ -1,60 +1,80 @@
-.registro-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 50px 0;
-}
-
-.form-container {
-  background-color: #fff;
-  padding: 30px;
+.registro-container {
+  max-width: 500px;
+  margin: 80px auto;
+  padding: 40px 30px;
+  background: #fff; /* aquí ya no debería aparecer en rojo */
+  border: 2px solid #ddd;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  width: 350px;
-}
-
-.form-container h2 {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
   text-align: center;
-  margin-bottom: 20px;
+}
+
+.registro-container h2 {
   font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 2.2rem;
+  margin-bottom: 25px;
+  color: #333;
 }
 
-.form-container label {
-  display: block;
-  margin-top: 10px;
-  font-weight: 500;
+.registro-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.form-container input {
-  width: 100%;
-  padding: 8px 10px;
-  margin-top: 5px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+.registro-container input[type="text"],
+.registro-container input[type="password"],
+.registro-container input[type="email"] {
+  padding: 14px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  outline: none;
 }
 
-.form-container button {
-  width: 100%;
-  padding: 10px;
-  margin-top: 20px;
-  border-radius: 6px;
-  border: none;
+.registro-container input[type="text"]:focus,
+.registro-container input[type="password"]:focus,
+.registro-container input[type="email"]:focus {
+  border-color: #333;
+}
+
+.registro-container button {
   background-color: #333;
   color: #fff;
-  font-size: 16px;
+  padding: 14px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.form-container button:hover {
+.registro-container button:hover {
   background-color: #555;
 }
 
 .texto-link {
-  color: #666;
+  display: inline-block;
+  margin-top: 15px;
+  font-size: 0.95rem;
+  color: #777;
   text-decoration: underline;
   cursor: pointer;
+  background: none;
 }
 
-.texto-link:hover {
-  color: #333;
+.error-general p {
+  color: red;
+  margin: 0;
+}
+.mensaje-exito {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  padding: 10px;
+  margin-top: 15px;
+  border-radius: 6px;
+  text-align: center;
 }
