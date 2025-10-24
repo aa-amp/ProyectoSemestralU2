@@ -1,6 +1,9 @@
 import React from "react";
 import "../estilos/styles.css";
-
+import Carrusel from "../componentes/Carrusel";
+import ProductoCard from "../componentes/ProductoCard";
+import { useCarrito } from "../contexto/CarritoContexto";
+import { showToast } from "../utils/MensajeFlotanteBTNComprar";
 const products = [
   { id: 1, img: "/imagenes/coca.jpg", title: "Coca cola 1L", desc: "Coca cola de 1L en su versión en botella de vidrio.", price: "$1.000" },
   { id: 2, img: "/imagenes/Lays.jpg", title: "Lays medianas", desc: "Papas fritas Lays en formato de 140 gramos.", price: "$1.300" },
@@ -19,67 +22,35 @@ const products = [
   { id: 15, img: "/imagenes/mogulosos.jpg", title: "Gomitas de Osos", desc: "Gomitas de Osos Mogul en su versión de 90 gramos.", price: "$1.100" }
 ];
 
-function ProductoCard({ product, onBuy }) {
-  return (
-    <div className="producto-card">
-      <img src={product.img} alt={product.title} />
-      <div className="producto-card-content">
-        <h3>{product.title}</h3>
-        <p className="descripcion">{product.desc}</p>
-        <p className="precio">{product.price}</p>
-        <button className="btn-comprar" onClick={() => onBuy(product)}>Comprar</button>
-      </div>
-    </div>
-  );
-}
-
-function Carousel({ items, onBuy }) {
-  return (
-    <div className="carrusel">
-      <div className="carrusel-track">
-        {items.slice(0, 10).map(item => (
-          <ProductoCard key={item.id} product={item} onBuy={onBuy} />
-        ))}
-      </div>
-      <button className="carrusel-btn prev">‹</button>
-      <button className="carrusel-btn next">›</button>
-    </div>
-  );
-}
-
 export default function HomePage() {
+  const { agregarProducto } = useCarrito();
+
   const handleBuy = (product) => {
-    console.log("Comprar:", product);
-    alert(`Añadido al carrito: ${product.title}`);
+    agregarProducto(product);
+    showToast(`Producto agregado: ${product.title} ${product.price}`);
   };
 
   return (
-    <>
-      <div id="header"></div>
-
+    <div className="page-wrapper">
       <main>
         <section className="destacados">
           <div className="banda-negra">
             <h1>Productos destacados</h1>
           </div>
-
-          <Carousel items={products} onBuy={handleBuy} />
+          <Carrusel items={products.slice(0, 10)} onBuy={handleBuy} />
         </section>
 
         <section>
           <div className="banda-negra">
             <h1>Todos nuestros productos</h1>
           </div>
-
           <div className="productos-grid">
-            {products.map(p => (
-              <ProductoCard key={p.id} product={p} onBuy={handleBuy} />
+            {products.map((p) => (
+              <ProductoCard key={p.id} product={p} />
             ))}
           </div>
         </section>
       </main>
-
-      <div id="footer"></div>
-    </>
+    </div>
   );
 }

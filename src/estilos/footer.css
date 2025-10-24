@@ -1,38 +1,39 @@
 footer {
   text-align: center;
   padding: 10px;
-  font-size: 14px;
+  font-size: 20px;
   background-color: #222;
   color: #fff;
 }
+
 footer a {
   color: #798a1c;
   text-decoration: none;
 }
+
 footer a:hover {
   color: #f0a500;
 }
+
 .footer-logos {
   display: flex;
   justify-content: center;
   gap: 15px;
   margin: 15px 0;
 }
+
 .footer-logo {
   width: 50px;
   height: auto;
   cursor: pointer;
   transition: transform 0.2s;
 }
+
 .footer-logo:hover {
   transform: scale(1.1);
 }
+
 @media (max-width: 600px) {
-  .footer-logos {
-    flex-direction: row;
-    gap: 10px;
-    justify-content: center;
-  }
   .footer-logo {
     width: 30px;
   }

@@ -13,13 +13,13 @@ export default function Footer() {
 
       <div className="footer-logos">
         <a href="https://www.instagram.com" target="_blank" rel="noreferrer">
-          <img src="/images/instagramlogo.png" alt="instagramlogo" className="footer-logo" />
+          <img src="/imagenes/instagramlogo.png" alt="instagramlogo" className="footer-logo" />
         </a>
         <a href="https://www.facebook.com" target="_blank" rel="noreferrer">
-          <img src="/images/facebooklogo.png" alt="facebooklogo" className="footer-logo" />
+          <img src="/imagenes/facebooklogo.png" alt="facebooklogo" className="footer-logo" />
         </a>
         <a href="https://www.x.com" target="_blank" rel="noreferrer">
-          <img src="/images/xlogo.png" alt="xlogo" className="footer-logo" />
+          <img src="/imagenes/xlogo.png" alt="xlogo" className="footer-logo" />
         </a>
       </div>
 

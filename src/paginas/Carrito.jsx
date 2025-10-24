@@ -1,52 +1,74 @@
-import React from "react";
+import React, { useState } from "react";
 import { useCarrito } from "../contexto/CarritoContexto";
 import { Link } from "react-router-dom";
 
 export default function Carrito() {
   const { carrito, eliminarProducto, vaciarCarrito } = useCarrito();
+  const [mensaje, setMensaje] = useState(null); // Para mostrar el mensaje
+  const [tipoMensaje, setTipoMensaje] = useState(""); // 'exito' o 'error'
 
   const total = carrito.reduce((acc, item) => {
     const precio = parseInt(item.price.replace(/\D/g, ""));
     return acc + precio;
   }, 0);
 
+  const handleVaciar = () => {
+    vaciarCarrito();
+    setMensaje("Carrito Vaciado");
+    setTipoMensaje("error");
+  };
+
+  const handleFinalizar = () => {
+    vaciarCarrito();
+    setMensaje("Compra Finalizada!!");
+    setTipoMensaje("exito");
+  };
+
   return (
-    <main>
-      <div className="banda-negra">
-        <h1>Carrito de compras</h1>
-      </div>
+    <div className="page-wrapper">
+      <main>
+        <div className="banda-negra">
+          <h1>Carrito de compras</h1>
+        </div>
 
-      {carrito.length === 0 ? (
-        <p>Tu carrito está vacío.</p>
-      ) : (
-        <>
-          <ul className="productos-grid">
-            {carrito.map((item, index) => (
-              <li key={index} className="producto-card">
-                <img src={item.img} alt={item.title} />
-                <div className="producto-card-content">
-                  <h3>{item.title}</h3>
-                  <p className="descripcion">{item.desc}</p>
-                  <p className="precio">{item.price}</p>
-                  <button className="btn-comprar" onClick={() => eliminarProducto(item.id)}>
-                    Eliminar
-                  </button>
-                </div>
-              </li>
-            ))}
-          </ul>
-
-          <div className="carrito-total" style={{ textAlign: "center", margin: "30px 0" }}>
-            <p className="strong-grande">Total: ${total}</p>
-            <button className="btn-comprar" onClick={vaciarCarrito}>Vaciar carrito</button>
-            <button className="btn-comprar" onClick={() => alert("Compra simulada")}>Finalizar compra</button>
+        {mensaje && (
+          <div className={`mensaje ${tipoMensaje}`}>
+            {mensaje}
           </div>
-        </>
-      )}
+        )}
 
-      <div style={{ textAlign: "center", marginBottom: "40px" }}>
-        <Link to="/" className="boton-reging">Volver a Inicio</Link>
-      </div>
-    </main>
+        {carrito.length === 0 && !mensaje ? (
+          <p>Tu carrito está vacío.</p>
+        ) : carrito.length > 0 ? (
+          <>
+            <ul className="productos-grid">
+              {carrito.map((item, index) => (
+                <li key={index} className="producto-card">
+                  <img src={item.img} alt={item.title} />
+                  <div className="producto-card-content">
+                    <h3>{item.title}</h3>
+                    <p className="descripcion">{item.desc}</p>
+                    <p className="precio">{item.price}</p>
+                    <button className="btn-comprar" onClick={() => eliminarProducto(item.id)}>
+                      Eliminar
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+
+            <div className="carrito-total">
+              <p className="strong-grande">Total: ${total}</p>
+              <button className="btn-comprar" onClick={handleVaciar}>Vaciar carrito</button>
+              <button className="btn-comprar" onClick={handleFinalizar}>Finalizar compra</button>
+            </div>
+          </>
+        ) : null}
+
+        <div style={{ textAlign: "center", marginBottom: "40px" }}>
+          <Link to="/" className="boton-reging">Volver a Inicio</Link>
+        </div>
+      </main>
+    </div>
   );
 }

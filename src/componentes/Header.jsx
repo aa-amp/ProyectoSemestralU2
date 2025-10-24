@@ -5,17 +5,17 @@ import "../estilos/styles.css";
 export default function Header() {
   return (
     <>
-      <header className="site-header" style={{display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px"}}>
-        <Link to="/" className="logo-link" style={{textDecoration: "none", color: "inherit", gap: "10px"}}>
-          <img src="/images/logobazar.png" alt="Bazar del barrio" className="logo" />
+      <header className="site-header">
+        <Link to="/" className="logo-link">
+          <img src="/imagenes/logobazar.png" alt="Bazar del barrio" className="logo" />
         </Link>
 
-        <h1 style={{margin: 0, flex: 1, textAlign: "center"}}>
-          <Link to="/" style={{textDecoration: "none", color: "inherit"}}>Bazar del barrio</Link>
+        <h1 className="site-title">
+          <Link to="/" className="site-title-link">Bazar del barrio</Link>
         </h1>
 
         <Link to="/carrito" className="carrito" aria-label="Carrito">
-          <img src="/images/logocarrito.png" alt="Carrito de compras" className="carrito-logo" />
+          <img src="/imagenes/logocarrito.png" alt="Carrito de compras" className="carrito-logo" />
         </Link>
       </header>
 

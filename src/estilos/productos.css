@@ -5,11 +5,12 @@
   max-width: 1800px;
   margin: 0 auto;
   padding: 20px;
-  box-sizing: border-box;
   background-color: #f5f5f5;
   border-radius: 10px;
+  box-sizing: border-box;
 }
-.productos-grid .producto-card {
+
+.producto-card {
   display: flex;
   flex-direction: column;
   border-radius: 10px;
@@ -17,58 +18,119 @@
   box-shadow: 0 6px 15px rgba(0,0,0,0.1);
   background-color: #fff;
   transition: transform 0.2s;
+  height: 100%;
 }
-.productos-grid .producto-card:hover {
+
+.producto-card:hover {
   transform: translateY(-5px);
 }
-.productos-grid .producto-card img {
+
+.producto-card img {
   width: 100%;
   height: 250px;
   object-fit: cover;
-  display: block;
-  border-radius: 5px 5px 0 0;
 }
-.productos-grid .producto-card-content {
-  background: rgba(255,255,255,0.95);
+
+.producto-card-content {
   padding: 15px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+  align-items: stretch;
   flex-grow: 1;
-  align-items: center;
 }
-.productos-grid .producto-card-content h3 {
+
+.producto-card-content h3 {
   font-size: 1.2rem;
-  margin: 0 0 5px 0;
+  margin-bottom: 5px;
   text-align: center;
+  min-height: 2.5em;
 }
-.productos-grid .producto-card-content .descripcion {
+
+.producto-card-content .descripcion {
   font-size: 0.95rem;
   color: #555;
-  margin: 5px 0 15px 0;
+  margin-bottom: 15px;
   text-align: center;
+  min-height: 3em;
 }
-.productos-grid .producto-card-content .precio {
+
+.precio {
   font-weight: bold;
   color: #222;
-  text-align: center;
   margin-bottom: 10px;
+  text-align: center;
 }
-.productos-grid .producto-card .btn-comprar {
+
+.btn-comprar {
   padding: 8px 16px;
   min-width: 120px;
-  max-width: 150px;
-  display: inline-block;
+  margin: 0 auto;
   background-color: #333;
   color: #fff;
   border: none;
   border-radius: 6px;
   font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
 }
-.productos-grid .producto-card .btn-comprar:hover {
+
+.btn-comprar:hover {
   background-color: #555;
   transform: translateY(-2px);
+}
+
+.banda-negra {
+  width: 100%;
+  background-color: #a8dadc;
+  color: #333;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.banda-negra h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+.carrito-total {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.carrito-total .btn-comprar {
+  margin: 0 15px;
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.carrito-total .btn-comprar:hover {
+  background-color: #555;
+  transform: translateY(-3px);
+}
+
+.mensaje {
+  padding: 15px 20px;
+  margin: 20px auto;
+  border-radius: 6px;
+  max-width: 600px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.mensaje.exito {
+  background-color: #4caf50;
+}
+
+.mensaje.error {
+  background-color: #f44336;
 }

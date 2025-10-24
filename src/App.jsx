@@ -1,10 +1,13 @@
-
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./componentes/Header";
 import Footer from "./componentes/Footer";
 import PaginaPrincipal from "./paginas/PaginaPrincipal";
 import Carrito from "./paginas/Carrito";
+import Productos from "./paginas/Productos";
+import Nosotros from "./paginas/Nosotros";
+import Contacto from "./paginas/Contacto";
+import Ayuda from "./paginas/Ayuda";
 
 export default function App() {
   return (
@@ -14,6 +17,10 @@ export default function App() {
         <Routes>
           <Route path="/" element={<PaginaPrincipal />} />
           <Route path="/carrito" element={<Carrito />} />
+          <Route path="/productos" element={<Productos />} />
+          <Route path="/nosotros" element={<Nosotros />} />
+          <Route path="/contacto" element={<Contacto />} />
+          <Route path="/ayuda" element= {<Ayuda />} />
         </Routes>
       </main>
       <Footer />
