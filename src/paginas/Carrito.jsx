@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 import "../estilos/styles.css";
 
 export default function Carrito() {
-  const { carrito, eliminarProducto, vaciarCarrito } = useCarrito();
-  const [mensaje, setMensaje] = useState(null); 
-  const [tipoMensaje, setTipoMensaje] = useState(""); 
+  const { carrito, agregarProducto, eliminarProducto, eliminarTodoProducto, vaciarCarrito } = useCarrito();
+  const [mensaje, setMensaje] = useState(null);
+  const [tipoMensaje, setTipoMensaje] = useState("");
 
   const total = carrito.reduce((acc, item) => {
     const precio = parseInt(item.price.replace(/\D/g, ""));
-    return acc + precio;
+    return acc + precio * item.cantidad;
   }, 0);
 
   const handleVaciar = () => {
@@ -40,7 +40,7 @@ export default function Carrito() {
 
         {carrito.length === 0 && !mensaje ? (
           <p>Tu carrito está vacío.</p>
-        ) : carrito.length > 0 ? (
+        ) : (
           <>
             <ul className="productos-grid">
               {carrito.map((item, index) => (
@@ -50,9 +50,18 @@ export default function Carrito() {
                     <h3>{item.title}</h3>
                     <p className="descripcion">{item.desc}</p>
                     <p className="precio">{item.price}</p>
-                    <button className="btn-comprar" onClick={() => eliminarProducto(item.id)}>
-                      Eliminar
-                    </button>
+                    <p>Cantidad: {item.cantidad}</p>
+                    <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
+                      <button className="btn-comprar" onClick={() => eliminarProducto(item.id)}>
+                        -
+                      </button>
+                      <button className="btn-comprar" onClick={() => agregarProducto(item)}>
+                        +
+                      </button>
+                      <button className="btn-comprar" onClick={() => eliminarTodoProducto(item.id)}>
+                        Eliminar todo
+                      </button>
+                    </div>
                   </div>
                 </li>
               ))}
@@ -64,11 +73,11 @@ export default function Carrito() {
               <button className="btn-comprar" onClick={handleFinalizar}>Finalizar compra</button>
             </div>
           </>
-        ) : null}
+        )}
 
         <Link to="/" className="boton-reging">
-                  Volver a Inicio
-                </Link>
+          Volver a Inicio
+        </Link>
       </main>
     </div>
   );

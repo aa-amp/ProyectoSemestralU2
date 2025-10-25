@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { validarRut, limpiarRut, validarCorreo } from "../utils/validaciones";
 import { SHA1 } from "../utils/sha1";
-import "../estilos/registro.css";
+import "../estilos/styles.css";
 
 export default function Registro() {
   const navigate = useNavigate();
@@ -46,9 +46,9 @@ export default function Registro() {
       <div className="registro-container">
         <h2>Formulario de Registro</h2>
         <form onSubmit={manejarEnvio} noValidate>
-          <input type="text" placeholder="Carlos" value={nombre} onChange={(e) => setNombre(e.target.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, ""))} />
+          <input type="text" placeholder="Nombre" value={nombre} onChange={(e) => setNombre(e.target.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, ""))} />
           <input type="text" placeholder="Apellido" value={apellido} onChange={(e) => setApellido(e.target.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, ""))} />
-          <input type="text" placeholder="Correo institucional" value={correo} onChange={(e) => setCorreo(e.target.value)} />
+          <input type="text" placeholder="Correo" value={correo} onChange={(e) => setCorreo(e.target.value)} />
           <input type="password" placeholder="Contraseña" value={clave} onChange={(e) => setClave(e.target.value)} />
           <input type="text" placeholder="RUT" value={rut} onChange={(e) => setRut(e.target.value)} style={{ borderColor: rut.length > 1 ? (validarRut(rut) ? "green" : "red") : "" }} />
           <button type="submit">Registrarse</button>

@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import { CarritoProvider } from "./contexto/CarritoContexto";
-import { LoginProvider } from "./contexto/LoginContexto"; // <-- nuevo
+import { LoginProvider } from "./contexto/LoginContexto";
 import "./estilos/styles.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
