@@ -7,11 +7,13 @@ export function CarritoProvider({ children }) {
 
   const agregarProducto = (producto) => {
     setCarrito((prevCarrito) => {
-      const index = prevCarrito.findIndex(p => p.id === producto.id);
-      if (index !== -1) {
-        const nuevoCarrito = [...prevCarrito];
-        nuevoCarrito[index].cantidad += 1;
-        return nuevoCarrito;
+      const existente = prevCarrito.find(p => p.id === producto.id);
+      if (existente) {
+        return prevCarrito.map(p =>
+          p.id === producto.id
+            ? { ...p, cantidad: p.cantidad + 1 }
+            : p
+        );
       } else {
         return [...prevCarrito, { ...producto, cantidad: 1 }];
       }
@@ -19,19 +21,13 @@ export function CarritoProvider({ children }) {
   };
 
   const eliminarProducto = (id) => {
-    setCarrito((prevCarrito) => {
-      const index = prevCarrito.findIndex(p => p.id === id);
-      if (index !== -1) {
-        const nuevoCarrito = [...prevCarrito];
-        if (nuevoCarrito[index].cantidad > 1) {
-          nuevoCarrito[index].cantidad -= 1;
-          return nuevoCarrito;
-        } else {
-          return nuevoCarrito.filter(p => p.id !== id);
-        }
-      }
-      return prevCarrito;
-    });
+    setCarrito((prevCarrito) =>
+      prevCarrito
+        .map(p =>
+          p.id === id ? { ...p, cantidad: p.cantidad - 1 } : p
+        )
+        .filter(p => p.cantidad > 0)
+    );
   };
 
   const eliminarTodoProducto = (id) => {
@@ -41,7 +37,9 @@ export function CarritoProvider({ children }) {
   const vaciarCarrito = () => setCarrito([]);
 
   return (
-    <CarritoContexto.Provider value={{ carrito, agregarProducto, eliminarProducto, eliminarTodoProducto, vaciarCarrito }}>
+    <CarritoContexto.Provider
+      value={{ carrito, agregarProducto, eliminarProducto, eliminarTodoProducto, vaciarCarrito }}
+    >
       {children}
     </CarritoContexto.Provider>
   );
