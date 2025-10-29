@@ -50,8 +50,8 @@ export default function Carrito() {
             <p className="precio">{item.price}</p>
             <p>Cantidad: {item.cantidad}</p>
             <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
-              <button className="btn-comprar" onClick={() => eliminarProducto(item.id)}>-</button>
-              <button className="btn-comprar" onClick={() => agregarProducto(item)}>+</button>
+              <button className="btn-cantidad" onClick={() => eliminarProducto(item.id)}>-</button>
+              <button className="btn-cantidad" onClick={() => agregarProducto(item)}>+</button>
             </div>
           </div>
         </li>
